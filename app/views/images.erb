@@ -1,0 +1,9 @@
+<h1>Welcome to Selfie!</h1>
+
+<form method="post" enctype='multipart/form-data' action="/users/:id/upload">
+<!--  Verificar que name corresponda al nombre/campo del modelo -->
+  <input type='text' name='title' placeholder='NewAlbum:title'>
+  <input type='file' name='photo[photo]'>
+  <br>
+  <input type='submit' value='Upload!'>
+</form>

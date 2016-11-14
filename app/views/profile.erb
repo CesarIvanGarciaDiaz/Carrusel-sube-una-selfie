@@ -1,0 +1,28 @@
+<style>
+body{
+  background-image: url("/fondo2.jpg");
+  background-size:  cover;
+}
+</style>
+
+<%@user = User.find_by(id: session[:user_id])%>
+<div class="top-nav">
+  <ul class="fixed-profile">
+        <li><a href="/"><img id="logo" src="/logo.png" width="140" height="43 ">
+        <li><a href="/signup">Registrate</a></li>
+        <li><a href="/login">Ingresar</a></li>
+        <li><a href="/logout">Salir</a></li>
+        <li><a href="/users/<%=@user.id%>/edit_user">Modificar Usuario</a></li>
+        <li><a href="/users/<%=@user.id%>/images">Upload Photo</a></li>
+        <li><a href="/users/<%=@user.id%>/photos">All Photo</a></li>
+      </ul>
+  </div>
+
+<h1 style="color:white">Bienvenido</h1>
+
+<form class="caja">
+  <label class="profile">Usuario : <b><%=@user.name %></b></label>
+  <label class="profile">Email : <b><%= @user.email %></b></label>
+  <div>
+    </form>
+</div>

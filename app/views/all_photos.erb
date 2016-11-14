@@ -1,0 +1,44 @@
+<style>
+body{
+  background-image: url("/fondo.jpeg");
+  background-size:  cover;
+  margin-top: 100px;
+}
+</style>
+
+<%@user = User.find_by(id: session[:user_id])%>
+<div class="top-nav">
+  <ul class="fixed-profile">
+        <li><a href="/"><img id="logo" src="/logo.png" width="140" height="43 ">
+        <li><a href="/signup">Registrate</a></li>
+        <li><a href="/login">Ingresar</a></li>
+        <li><a href="/logout">Salir</a></li>
+        <li><a href="/users/<%=@user.id%>/edit_user">Modificar Usuario</a></li>
+        <li><a href="/users/<%=@user.id%>/images">Upload Photo</a></li>
+        <li><a href="/users/<%=@user.id%>/photos">All Photo</a></li>
+      </ul>
+  </div>
+
+
+<% @albums.each_with_index do |album, i| %>
+  <div id="album<%= i %>">
+    <div class="carrousel">
+          <h1 class="h1-left"><%= album.title %> [<%= album.photos.length %>]</h1>
+      <ul class="frames">
+          <% album.photos.each_with_index do |photo,i| %>
+            <li >
+              <img src="<%= photo.photo_url(:small) %>">
+            <!--   <img src="<%#= photo.photo_url(:large) %>" class="hidden"> -->
+            </li>
+<!-- <label style="color:red;font-size:40px;"><%= photo.photo_url%></label> -->
+
+          <br>
+      </ul>
+      </div>
+      <!-- <div class="slider_controls">
+        <p STYLE="position:absolute; TOP:<%= (515 * (i)) + 300 %>px;" class="next_frame">&gt;</p>
+        <p STYLE="position:absolute; TOP:<%= (515 * (i)) + 300 %>px;" class="previous_frame">&lt;</p>
+      </div>
+-->
+    <% end %>
+      <% end %>
